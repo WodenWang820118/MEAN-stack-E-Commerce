@@ -35,6 +35,15 @@ export class UsersController {
     return this.usersService.create(userDto);
   }
 
+  @Post(':login')
+  login(
+    @Body() loginDto: { email: string; passwordHash: string },
+  ): Promise<{ email: string; token: string }> {
+    console.log(`email: ${loginDto.email}`);
+    console.log(`password: ${loginDto.passwordHash}`);
+    return this.usersService.login(loginDto.email, loginDto.passwordHash);
+  }
+
   @Delete(':id')
   delete(@Param('id') id: string): Promise<User> {
     return this.usersService.delete(id);

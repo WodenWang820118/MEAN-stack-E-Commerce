@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -11,6 +11,17 @@ import { UsersModule } from './users/users.module';
 // configs
 import config from './config/keys';
 
+// middlewares
+import { expressjwt } from 'express-jwt';
+
+function authJwt() {
+  const secret = process.env.JWT_SECRET;
+  return expressjwt({
+    secret: secret,
+    algorithms: ['HS256'],
+  });
+}
+
 @Module({
   imports: [
     CategoriesModule,
@@ -21,4 +32,9 @@ import config from './config/keys';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+// export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(authJwt()).forRoutes('*');
+  }
+}
