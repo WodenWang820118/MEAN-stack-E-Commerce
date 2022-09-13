@@ -46,6 +46,7 @@ export class UsersService {
         const token = jwt.sign(
           {
             userId: userFound._id,
+            isAdmin: userFound.isAdmin,
           },
           process.env.JWT_SECRET,
         );
