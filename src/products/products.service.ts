@@ -27,7 +27,7 @@ export class ProductsService {
     // console.log(`return category: ${category}`);
 
     if (!category) {
-      throw new Error(`Category ${product.category.id} not found`);
+      throw new Error(`Category ${product.category._id} not found`);
     }
 
     const newProduct = new this.productModel(product);
