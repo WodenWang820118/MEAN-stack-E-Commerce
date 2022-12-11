@@ -1,10 +1,12 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { OrderItem } from 'src/order-item/interfaces/order-item-interface';
-import { User } from 'src/users/interfaces/user.interface';
+import { OrderItem } from '../../order-item/interfaces/order-item-interface';
+import { OrderItemSchema } from '../../order-item/schemas/order-item.schema';
+import { User } from '../../users/interfaces/user.interface';
+import { UserSchema } from '../../users/schemas/user.schema';
 
 @Schema()
 export class Order {
-  @Prop()
+  @Prop({ type: [OrderItemSchema] })
   orderItem: OrderItem[];
 
   @Prop()
@@ -31,7 +33,7 @@ export class Order {
   @Prop()
   totalPrice: number;
 
-  @Prop()
+  @Prop({ type: [UserSchema] })
   user: User;
 
   @Prop()

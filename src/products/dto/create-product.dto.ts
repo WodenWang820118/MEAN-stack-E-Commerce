@@ -1,6 +1,7 @@
 import { Category } from '../../categories/interfaces/category.interface';
+import { Product } from '../interfaces/product.interface';
 
-export class CreateProductDto {
+export class CreateProductDto implements Product {
   readonly name: string;
   readonly description: string;
   readonly richDescription?: string;

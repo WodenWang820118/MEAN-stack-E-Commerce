@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Product } from 'src/products/interfaces/product.interface';
+import { Product } from '../../products/interfaces/product.interface';
+import { ProductSchema } from '../../products/schemas/product.schema';
 
 @Schema()
 export class OrderItem {
-  @Prop()
+  @Prop({ type: [ProductSchema] })
   product: Product;
 
   @Prop()

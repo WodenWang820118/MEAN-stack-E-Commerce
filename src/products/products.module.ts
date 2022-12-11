@@ -4,11 +4,15 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductsController } from './products.controller';
 import { ProductsService } from './products.service';
 import { ProductSchema } from './schemas/product.schema';
+import { MulterModule } from '@nestjs/platform-express/multer';
 
 @Module({
   imports: [
     CategoriesModule,
     MongooseModule.forFeature([{ name: 'Product', schema: ProductSchema }]),
+    MulterModule.register({
+      dest: './public/uploads',
+    }),
   ],
   controllers: [ProductsController],
   providers: [ProductsService],

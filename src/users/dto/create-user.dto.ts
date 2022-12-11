@@ -1,4 +1,6 @@
-export class UserDto {
+import { User } from '../interfaces/user.interface';
+
+export class UserDto implements User {
   readonly name: string;
   readonly email: string;
   readonly passwordHash: string;
