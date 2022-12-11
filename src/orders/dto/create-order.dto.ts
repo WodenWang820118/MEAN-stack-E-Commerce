@@ -1,7 +1,8 @@
 import { OrderItem } from 'src/order-item/interfaces/order-item-interface';
 import { User } from 'src/users/interfaces/user.interface';
+import { Order } from '../interfaces/orders.interface';
 
-export class CreateOrderDto {
+export class CreateOrderDto implements Order {
   readonly _id?: string;
   readonly orderItems: OrderItem[];
   readonly shippingAddress1: string;
