@@ -6,11 +6,14 @@ import {
   Param,
   Post,
   Put,
+  UploadedFile,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './interfaces/product.interface';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('products')
 export class ProductsController {
@@ -42,5 +45,11 @@ export class ProductsController {
     @Body() createProductDto: CreateProductDto,
   ): Promise<Product> {
     return this.productsService.update(id, createProductDto);
+  }
+
+  @Post('upload')
+  @UseInterceptors(FileInterceptor('file'))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {
+    console.log(file);
   }
 }

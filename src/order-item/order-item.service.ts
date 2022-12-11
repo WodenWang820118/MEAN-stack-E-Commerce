@@ -6,15 +6,15 @@ import { OrderItem } from './interfaces/order-item-interface';
 @Injectable()
 export class OrderItemService {
   constructor(
-    @InjectModel('Order') private readonly orderModel: Model<OrderItem>,
+    @InjectModel('OrderItem') private readonly orderItemModel: Model<OrderItem>,
   ) {}
 
   async findAll(): Promise<OrderItem[]> {
-    return await this.orderModel.find();
+    return await this.orderItemModel.find();
   }
 
   async create(orderItem: OrderItem): Promise<OrderItem> {
-    const newOrderItem = new this.orderModel(orderItem);
+    const newOrderItem = new this.orderItemModel(orderItem);
     return await newOrderItem.save();
   }
 }
