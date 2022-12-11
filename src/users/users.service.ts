@@ -32,6 +32,9 @@ export class UsersService {
     email: string,
     password: string,
   ): Promise<{ email: string; token: string }> {
+    console.log('Checking user');
+    console.log('email ', email);
+    console.log('password, ', password);
     const userFound = await this.findByEmail(email);
     if (userFound !== null) {
       console.log('Checking password');

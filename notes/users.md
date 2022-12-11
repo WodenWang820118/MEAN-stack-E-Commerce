@@ -1,2 +1,9 @@
-1. long time ago, forget how to authenticate
-2. test the authentication after completing the front-end
+# Authentication
+- POST http://localhost:3000/users/login
+- body
+{
+  "email": <email>,
+  "passwordHash": <password>
+}
+- check Atlas database collection
+- may register the user using the "password" instead of "passwordHash" since it's confusing
