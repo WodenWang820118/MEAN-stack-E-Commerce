@@ -7,6 +7,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CategoriesModule } from './categories/categories.module';
 import { ProductsModule } from './products/products.module';
 import { UsersModule } from './users/users.module';
+import { OrdersModule } from './orders/orders.module';
+import { OrderItemModule } from './order-item/order-item.module';
 
 // configs
 import config from './config/keys';
@@ -45,6 +47,8 @@ async function isRevokedCallback(req: any, token: any) {
     ProductsModule,
     MongooseModule.forRoot(config.mongoURI),
     UsersModule,
+    OrdersModule,
+    OrderItemModule,
   ],
   controllers: [AppController],
   providers: [AppService],
