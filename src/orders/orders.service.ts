@@ -31,6 +31,4 @@ export class OrdersService {
   async delete(id: string): Promise<Order> {
     return await this.orderModel.findByIdAndRemove(id);
   }
-
-  // TODO: getTotalPrice
 }

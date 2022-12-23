@@ -20,6 +20,11 @@ export class OrdersController {
     return this.ordersService.findAll();
   }
 
+  @Get(':id')
+  findOne(@Param('id') id: string): Promise<Order> {
+    return this.ordersService.findOne(id);
+  }
+
   @Post()
   create(@Body() createOrderDto: CreateOrderDto): Promise<Order> {
     return this.ordersService.create(createOrderDto);

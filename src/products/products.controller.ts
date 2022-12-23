@@ -35,7 +35,7 @@ export class ProductsController {
   }
 
   @Get(':id')
-  findOne(id: string): Promise<Product> {
+  findOne(@Param('id') id: string): Promise<Product> {
     return this.productsService.findOne(id);
   }
 

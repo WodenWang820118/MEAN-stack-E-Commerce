@@ -29,7 +29,8 @@ function authJwt() {
     algorithms: ['HS256'],
     isRevoked: isRevokedCallback,
   }).unless({
-    path: [...exposedUrls],
+    // path: [...exposedUrls],
+    path: [{ url: /(.*)/ }],
   });
 }
 

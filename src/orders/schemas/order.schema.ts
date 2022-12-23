@@ -7,7 +7,7 @@ import { UserSchema } from '../../users/schemas/user.schema';
 @Schema()
 export class Order {
   @Prop({ type: [OrderItemSchema] })
-  orderItem: OrderItem[];
+  orderItems: OrderItem[];
 
   @Prop()
   shippingAddress1: string;
