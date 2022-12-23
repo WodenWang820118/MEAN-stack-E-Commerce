@@ -11,4 +11,31 @@ export class UserDto implements User {
   readonly country: string;
   readonly phone: string;
   readonly isAdmin: boolean;
+  readonly _id?: string;
+
+  constructor(
+    name: string,
+    email: string,
+    passwordHash: string,
+    street: string,
+    apartment: string,
+    city: string,
+    zipCode: string,
+    country: string,
+    phone: string,
+    isAdmin: boolean,
+    _id?: string,
+  ) {
+    this.name = name;
+    this.email = email;
+    this.passwordHash = passwordHash;
+    this.street = street;
+    this.apartment = apartment;
+    this.city = city;
+    this.zipCode = zipCode;
+    this.country = country;
+    this.phone = phone;
+    this.isAdmin = isAdmin;
+    this._id = _id;
+  }
 }

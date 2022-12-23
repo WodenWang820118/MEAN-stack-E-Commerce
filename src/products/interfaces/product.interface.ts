@@ -1,7 +1,7 @@
 import { Category } from '../../categories/interfaces/category.interface';
 
+// make sure properties are in the same order as in the DTO class for testing purposes
 export interface Product {
-  _id?: string;
   name: string;
   description: string;
   richDescription?: string;
@@ -15,4 +15,5 @@ export interface Product {
   numReviews: number;
   isFeatured: boolean;
   dateCreated: Date;
+  _id?: string;
 }

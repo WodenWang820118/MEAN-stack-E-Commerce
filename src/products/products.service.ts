@@ -19,12 +19,10 @@ export class ProductsService {
     return await this.productModel.findOne({ _id: id });
   }
 
+  // TODO: save the file as a blob in the database
   async create(product: Product): Promise<Product> {
-    const category = await this.categoriesService.findByName(
-      product.category.name,
-    );
-    // console.log(`searching category ${product.category.name}`);
-    // console.log(`return category: ${category}`);
+    if (Object.keys(product).length === 0) return;
+    const category = await this.categoriesService.findOne(product.category._id);
 
     if (!category) {
       throw new Error(`Category ${product.category._id} not found`);

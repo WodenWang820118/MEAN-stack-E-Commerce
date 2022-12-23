@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { OrdersService } from './orders.service';
 
+// TODO: write tests including file upload and save to db
 describe('OrdersService', () => {
   let service: OrdersService;
 
